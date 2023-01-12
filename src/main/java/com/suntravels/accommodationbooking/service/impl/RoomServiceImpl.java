@@ -1,8 +1,6 @@
 package com.suntravels.accommodationbooking.service.impl;
 
-import com.suntravels.accommodationbooking.dto.HotelDTO;
 import com.suntravels.accommodationbooking.dto.RoomDTO;
-import com.suntravels.accommodationbooking.entity.HotelEntity;
 import com.suntravels.accommodationbooking.entity.RoomEntity;
 import com.suntravels.accommodationbooking.repository.RoomRepository;
 import com.suntravels.accommodationbooking.service.RoomService;
@@ -35,6 +33,17 @@ public class RoomServiceImpl implements RoomService
         List<RoomEntity> listOfRooms =  (List<RoomEntity>)roomRepository.findAll();
         List<RoomDTO> roomList = new ArrayList<>();
         for(RoomEntity re: listOfRooms){
+            RoomDTO dto = modelMapper.map(re, RoomDTO.class);
+            roomList.add(dto);
+        }
+        return roomList;
+    }
+    @Override
+    public List<RoomDTO> searchRooms( int maxAdults, int availableRooms )
+    {
+        List<RoomEntity> roomEntities= roomRepository.findByMaxAdultsGreaterThanEqualAndAvailableRoomsGreaterThanEqual( maxAdults, availableRooms );
+        List<RoomDTO> roomList = new ArrayList<>();
+        for(RoomEntity re: roomEntities){
             RoomDTO dto = modelMapper.map(re, RoomDTO.class);
             roomList.add(dto);
         }
