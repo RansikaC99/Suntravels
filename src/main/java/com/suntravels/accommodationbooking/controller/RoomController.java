@@ -25,8 +25,14 @@ public class RoomController
 
     @PostMapping("/rooms")
     public ResponseEntity<RoomDTO> saveRoom( @RequestBody RoomDTO roomDTO){
-        roomService.saveRoom( roomDTO );
+        roomDTO = roomService.saveRoom( roomDTO );
         return new ResponseEntity<>(roomDTO, HttpStatus.CREATED );
+    }
+
+    @PostMapping("/roomList")
+    public ResponseEntity<List<RoomDTO>> addRoomList( @RequestBody List<RoomDTO> roomDTOList){
+        roomDTOList = roomService.addRooms( roomDTOList );
+        return new ResponseEntity<>(roomDTOList, HttpStatus.CREATED );
     }
 
     @GetMapping("/rooms")

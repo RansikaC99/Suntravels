@@ -11,4 +11,5 @@ public interface RoomService
     RoomDTO saveRoom( RoomDTO roomDTO);
     List<RoomDTO> getAllRooms();
     List<RoomDTO> searchRooms( int maxAdults, int availableRooms );
+    List<RoomDTO> addRooms(List<RoomDTO> roomDTOList);
 }

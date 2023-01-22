@@ -38,6 +38,9 @@ public class ContractEntity
     @ManyToOne
     @JoinColumn(name = "hotel_id", nullable = false)
     private HotelEntity hotel;
+    @OneToMany
+    @JsonManagedReference
+    private List<RoomEntity> rooms;
     private LocalDate startDate;
     private LocalDate endDate;
 

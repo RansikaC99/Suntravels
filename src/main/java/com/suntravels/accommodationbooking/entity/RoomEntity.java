@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name="ROOM_TABLE")
@@ -29,7 +30,7 @@ public class RoomEntity
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "contract_id", nullable = false)
+    @JoinColumn(name = "contract_id")
     private ContractEntity contract;
     private String roomType;
     private BigDecimal price;

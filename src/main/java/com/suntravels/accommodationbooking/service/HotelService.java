@@ -8,4 +8,6 @@ public interface HotelService
 {
     HotelDTO saveHotel( HotelDTO hotelDTO);
     List<HotelDTO> getAllHotels();
+    HotelDTO getHotelById( Long hotelId);
+    List<HotelDTO> findByName(String name);
 }

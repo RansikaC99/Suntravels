@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class ContractController
 
     @PostMapping("/contracts")
     public ResponseEntity<ContractDTO> saveContract( @RequestBody ContractDTO contractDTO){
-        contractService.saveContract( contractDTO );
+        contractDTO = contractService.saveContract( contractDTO );
         return new ResponseEntity<>(contractDTO, HttpStatus.CREATED );
     }
 
@@ -35,6 +36,11 @@ public class ContractController
     public ResponseEntity<List<ContractDTO>> getAllContracts(){
         List<ContractDTO> contractList = contractService.getAllContracts();
         return new ResponseEntity<>(contractList, HttpStatus.OK );
+    }
+    @GetMapping("/contracts/search")
+    public ResponseEntity<List<ContractDTO>> searchByHotelName(@RequestParam String name) {
+        List<ContractDTO> contractList = contractService.searchByHotelName( name );
+        return  new ResponseEntity<>(contractList, HttpStatus.OK );
     }
 
     @DeleteMapping("/contracts/{contractId}")

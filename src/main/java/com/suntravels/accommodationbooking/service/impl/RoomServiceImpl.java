@@ -49,4 +49,14 @@ public class RoomServiceImpl implements RoomService
         }
         return roomList;
     }
+
+    @Override
+    public List<RoomDTO> addRooms( List<RoomDTO> roomDTOList )
+    {
+        for(RoomDTO roomDTO: roomDTOList){
+            RoomEntity roomEntity = modelMapper.map(roomDTO, RoomEntity.class);
+            roomRepository.save( roomEntity );
+        }
+        return roomDTOList;
+    }
 }

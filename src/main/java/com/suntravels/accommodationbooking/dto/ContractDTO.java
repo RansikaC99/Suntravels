@@ -15,6 +15,8 @@ public class ContractDTO
 {
     private Long id;
     private HotelDTO hotel;
+
+    private List<RoomDTO> rooms;
     private LocalDate startDate;
     private LocalDate endDate;
 }
