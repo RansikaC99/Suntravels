@@ -31,6 +31,7 @@ public class HotelEntity
     private String name;
     private String location;
     private String contactNumber;
+    private Double markup;
 
     public Long getId()
     {
@@ -41,4 +42,5 @@ public class HotelEntity
     {
         this.id = id;
     }
+
 }

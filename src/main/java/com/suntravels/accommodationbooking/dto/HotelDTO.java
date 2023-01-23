@@ -15,4 +15,5 @@ public class HotelDTO
     private String name;
     private String location;
     private String contactNumber;
+    private Double markup;
 }

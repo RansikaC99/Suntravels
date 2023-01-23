@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,10 +39,11 @@ public class RoomServiceImpl implements RoomService
         }
         return roomList;
     }
+
     @Override
-    public List<RoomDTO> searchRooms( int maxAdults, int availableRooms )
+    public List<RoomDTO> searchRooms( LocalDate checkinDate, int noAdults )
     {
-        List<RoomEntity> roomEntities= roomRepository.findByMaxAdultsGreaterThanEqualAndAvailableRoomsGreaterThanEqual( maxAdults, availableRooms );
+        List<RoomEntity> roomEntities= roomRepository.findRoomsbyAdults( checkinDate, noAdults );
         List<RoomDTO> roomList = new ArrayList<>();
         for(RoomEntity re: roomEntities){
             RoomDTO dto = modelMapper.map(re, RoomDTO.class);

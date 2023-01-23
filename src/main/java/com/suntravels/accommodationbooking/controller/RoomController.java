@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -42,8 +43,8 @@ public class RoomController
     }
 
     @GetMapping("/rooms/search")
-    public ResponseEntity<List<RoomDTO>> searchRooms( @RequestParam int maxAdults, @RequestParam int availableRooms ){
-        List<RoomDTO> roomList = roomService.searchRooms( maxAdults, availableRooms );
+    public ResponseEntity<List<RoomDTO>> searchRooms( @RequestParam LocalDate checkinDate, @RequestParam int noAdults ){
+        List<RoomDTO> roomList = roomService.searchRooms( checkinDate, noAdults );
         return new ResponseEntity<>(roomList, HttpStatus.OK );
     }
 }
