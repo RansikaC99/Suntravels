@@ -21,6 +21,7 @@ public class AccommodationBookingApplication {
 		return new ModelMapper();
 	}
 
+	//resolve the cors error on chrome
 	@Bean
 	public CorsFilter corsFilter() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
